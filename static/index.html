@@ -10,6 +10,7 @@
     </h3>
     <div id="messages">
     </div>
+   <input id="input" autocomplete="off" /><button onclick="sendmessage()">Send</button>
 <!--     Scripts -->
    <script src="/socket.io/socket.io.js"></script>
 <script>
@@ -18,6 +19,10 @@
   socket.on("chat", (msg) =>{
     msgbox.innerHTML += "<br><span>" + msg + "</span>"
   })
+  function sendmessage() {
+    socket.emit(chat, input.value)
+    input.value = ""
+  }
 </script>
   </body>
 </html>
